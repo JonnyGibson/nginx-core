@@ -2,14 +2,30 @@ version: '3.7'
 
 services:
 
-  example.app:
-    image: example.app
-    container_name: example.app
-    build: Example.App
+  app_one:
+    image: app
+    build: app
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
 
-  example.proxy:
-    image: example.proxy
-    container_name: example.proxy
-    build: Example.Proxy
+  app_two:
+    image: app
+    build: app
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  app_three:
+    image: api
+    build: api
+    ports:
+      - 8000:80
+      - 8001:443
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      
+  nginx:
+    image: nginx
+    container_name: nginx
+    build: nginx
     ports:
       - 443:443

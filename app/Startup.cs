@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using System;
 
 namespace Example.App
 {
@@ -9,7 +10,7 @@ namespace Example.App
 		{
 			app.Run(async (context) =>
 			{
-				await context.Response.WriteAsync("Hello World!");
+				await context.Response.WriteAsync($"<h1>Reverse Proxy Test</h1>As far as i know the time is <strong>{DateTime.Now}</strong>");
 			});
 		}
 	}
